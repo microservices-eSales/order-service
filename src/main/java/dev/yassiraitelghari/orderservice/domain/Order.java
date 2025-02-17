@@ -23,7 +23,7 @@ public class Order {
     private UUID id ;
 
     @Column(unique = true, nullable = false)
-    private String reference;
+    private UUID reference;
 
     private LocalDateTime date ;
 
@@ -32,5 +32,12 @@ public class Order {
     private UUID userId ;
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItem ;
+    @OneToOne(mappedBy = "order")
+    private Delivery delivery ;
 
+
+    @PrePersist
+    public void generateReference() {
+        this.reference = this.id;
+    }
 }

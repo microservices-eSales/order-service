@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1739799288342-1
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: orders
+            constraintName: fk_orders_on_delivery
+  - changeSet:
+      id: 1739799288342-2
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropColumn:
+            columnName: delivery_id
+            tableName: orders
+

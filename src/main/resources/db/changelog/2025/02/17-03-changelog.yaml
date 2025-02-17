@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1739799000394-6
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: orders
+            constraintName: fk_orders_on_order
+  - changeSet:
+      id: 1739799000394-1
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: delivery_id
+                  type: UUID
+            tableName: orders
+  - changeSet:
+      id: 1739799000394-2
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: order_id
+                  type: UUID
+            tableName: deliveries
+  - changeSet:
+      id: 1739799000394-3
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: order_id
+            constraintName: uc_deliveries_order
+            tableName: deliveries
+  - changeSet:
+      id: 1739799000394-4
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: order_id
+            baseTableName: deliveries
+            constraintName: FK_DELIVERIES_ON_ORDER
+            referencedColumnNames: id
+            referencedTableName: orders
+  - changeSet:
+      id: 1739799000394-5
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: delivery_id
+            baseTableName: orders
+            constraintName: FK_ORDERS_ON_DELIVERY
+            referencedColumnNames: id
+            referencedTableName: deliveries
+  - changeSet:
+      id: 1739799000394-8
+      author: Yasser
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropColumn:
+            columnName: order_id
+            tableName: orders
+
