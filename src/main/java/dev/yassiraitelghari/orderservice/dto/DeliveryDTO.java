@@ -12,5 +12,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DeliveryDTO {
     private int trackingNumber;
-    private DeliveryStatus status ;
+    private DeliveryStatus deliveryStatus ;
 }
